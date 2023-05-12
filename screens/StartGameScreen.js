@@ -15,8 +15,9 @@ export default StartGameScreen;
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flex: 1,
+        // flex: 1,
         padding: 16,
-        marginTop: 100,  
+        marginTop: 100,
+        backgroundColor: '#72063c',
     }
 });
