@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#4e0329',
+        backgroundColor: '#3b021f',
         borderRadius: 8,
         marginHorizontal: 24,
         marginTop: 100,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     numberInput: {
         height: 50,
         width: 50,
-        fontsize: 32,
+        fontSize: 32,
         borderBottomColor: '#ddb52f',
         borderBottomWidth: 2,
         color: '#ddb52f',
