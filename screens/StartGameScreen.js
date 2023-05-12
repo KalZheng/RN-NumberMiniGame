@@ -23,7 +23,7 @@ export default StartGameScreen;
 const styles = StyleSheet.create({
     inputContainer: {
         // flex: 1,
-        backgroundColor: '#72063c',
+        backgroundColor: '#4e0329',
         borderRadius: 8,
         marginHorizontal: 24,
         marginTop: 100,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         color: '#ddb52f',
         marginVertical: 8,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         width: 50,
         textAlign: 'center',
     }
