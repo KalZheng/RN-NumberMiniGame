@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, Alert, } from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import Colors from "../constants/colors";
+import Card from "../components/ui/card";
+import InstructionText from "../components/ui/instructionText";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 function generateRandomBetween(min, max, exclude) {
@@ -55,13 +57,13 @@ function GameScreen({ userNumber, onGameOver }) {
         <View style={styles.screen}>
             <Title>Opponent's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
-            <View>
-                <Text>Higher or lower?</Text>
+            <Card>
+                <InstructionText>Higher or lower?</InstructionText>
                 <View>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
                     <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
                 </View>
-            </View>
+            </Card>
             {/* <View>Log Rounds</View> */}
         </View>
     );
