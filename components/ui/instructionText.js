@@ -2,9 +2,11 @@ import { Text, StyleSheet } from "react-native";
 
 import Colors from "../../constants/colors";
 
-function InstructionText({children}) {
+//use style ass props
+function InstructionText({ children, style }) {
     return (
-        <Text style={styles.instructionText}>{children}</Text>
+        // this allow to merge style
+        <Text style={[styles.instructionText, style]}>{children}</Text>
     );
 }
 

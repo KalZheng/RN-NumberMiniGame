@@ -27,7 +27,7 @@ function GameScreen({ userNumber, onGameOver }) {
 
     useEffect(() => {
         // console.log(currentGuess, typeof currentGuess, userNumber, typeof userNumber);
-        if(currentGuess == userNumber){
+        if (currentGuess == userNumber) {
             // console.log('here');
             onGameOver();
         }
@@ -37,9 +37,9 @@ function GameScreen({ userNumber, onGameOver }) {
         if (
             (direction === 'lower' && currentGuess < userNumber)
             || (direction === 'greater' && currentGuess > userNumber)) {
-            Alert.alert("Don't Lie", 
-                        "You know this is wrong", 
-                        [{ text: "Sorry!", style: 'cancel' }]
+            Alert.alert("Don't Lie",
+                "You know this is wrong",
+                [{ text: "Sorry!", style: 'cancel' }]
             );
             return;
         }
@@ -58,10 +58,14 @@ function GameScreen({ userNumber, onGameOver }) {
             <Title>Opponent's Guess</Title>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card>
-                <InstructionText>Higher or lower?</InstructionText>
-                <View>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
-                    <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
+                <InstructionText style={styles.instructionText}>Higher or lower?</InstructionText>
+                <View style={styles.buttonsContainer}>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
+                    </View>
                 </View>
             </Card>
             {/* <View>Log Rounds</View> */}
@@ -76,12 +80,13 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: Colors.accent500,
-        textAlign: 'center',
-        borderWidth: 2,
-        borderColor: Colors.accent500,
-    }
+    instructionText:{
+        marginBottom: 12,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+    },
+    buttonContainer: {
+        flex: 1,
+    },
 });
