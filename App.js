@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts } from 'expo-font';//use specify font type
+import { AppLoading } from 'expo-app-loading'
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
@@ -11,23 +13,34 @@ export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
 
-  function pickedNumberHandler(pickedNumber){
+  //here use the hooks/ specify the font type for app. changing from default.
+  // this return boolean to show if fonts are loaded already
+  const [fontsLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+  function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
   }
 
-  function gameOverHandler(){
+  function gameOverHandler() {
     setGameIsOver(true);
   }
 
-  let screen = <StartGameScreen onPickNumber={pickedNumberHandler}/>;
+  let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
-  if(userNumber){
-    screen = <GameScreen userNumber={userNumber} 
-                          onGameOver={gameOverHandler}/>;
+  if (userNumber) {
+    screen = <GameScreen userNumber={userNumber}
+      onGameOver={gameOverHandler} />;
   }
 
-  if(gameIsOver && userNumber){
+  if (gameIsOver && userNumber) {
     screen = <GameOverScreen />
   }
 
@@ -37,11 +50,11 @@ export default function App() {
         resizeMode='cover'
         style={styles.rootScreen}
         imageStyle={styles.backgroundImage}
-        source={require('./assets/images/background.png')} 
+        source={require('./assets/images/background.png')}
       >
         {/* <StartGameScreen /> */}
         <SafeAreaView style={styles.rootScreen}>
-        {screen}
+          {screen}
         </SafeAreaView>
       </ImageBackground>
     </LinearGradient>

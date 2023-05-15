@@ -26,13 +26,16 @@ function GameScreen({ userNumber, onGameOver }) {
     const initialGuess = generateRandomBetween(1, 100, userNumber);
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
+    //useEffect runs whenever the variable lists 
+    // in the array changes, 
+    // in this case currentGuess, userNumber, onGameOver
     useEffect(() => {
         // console.log(currentGuess, typeof currentGuess, userNumber, typeof userNumber);
         if (currentGuess == userNumber) {
             // console.log('here');
             onGameOver();
         }
-    }, [currentGuess, userNumber, onGameOver]);
+    }, [currentGuess, userNumber, onGameOver]);//here are the list of value watch
 
     function nextGuessHandler(direction) {//direction => 'lower', 'greater'
         if (
