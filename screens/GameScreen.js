@@ -34,7 +34,7 @@ function GameScreen({ userNumber, onGameOver }) {
         // console.log(currentGuess, typeof currentGuess, userNumber, typeof userNumber);
         if (currentGuess == userNumber) {
             // console.log('here');
-            onGameOver();
+            onGameOver(guessRounds.length);
         }
     }, [currentGuess, userNumber, onGameOver]);//here are the list of value watch
 
@@ -88,7 +88,7 @@ function GameScreen({ userNumber, onGameOver }) {
                     </View>
                 </View>
             </Card>
-            <View>
+            <View style={styles.listContainer}>
                 {/* {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
                 <FlatList
                     data={guessRounds}
@@ -115,5 +115,9 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flex: 1,
+    },
+    listContainer: {
+        flex: 1,
+        padding: 16,
     },
 });
