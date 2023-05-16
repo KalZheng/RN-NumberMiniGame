@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
-import Colors from "../constants/colors";
 import Card from "../components/ui/card";
 import InstructionText from "../components/ui/instructionText";
 import PrimaryButton from "../components/ui/PrimaryButton";
