@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, } from "react-native";
+import { View, Text, StyleSheet, Alert, FlatList} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 import Title from "../components/ui/Title";
@@ -24,6 +24,7 @@ let maxBoundary = 100;
 function GameScreen({ userNumber, onGameOver }) {
     const initialGuess = generateRandomBetween(1, 100, userNumber);
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
+    const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
     //useEffect runs whenever the variable lists 
     // in the array changes, 
@@ -37,7 +38,7 @@ function GameScreen({ userNumber, onGameOver }) {
     }, [currentGuess, userNumber, onGameOver]);//here are the list of value watch
 
     //this is only happen when the screen load for successfully
-    useEffect(() => { 
+    useEffect(() => {
         minBoundary = 1;
         maxBoundary = 100;
     }, []);
@@ -60,6 +61,7 @@ function GameScreen({ userNumber, onGameOver }) {
         // console.log(userNumber, currentGuess, direction, minBoundary, maxBoundary);
         const newRndNumber = generateRandomBetween(minBoundary, maxBoundary, currentGuess);
         setCurrentGuess(newRndNumber);
+        setGuessRounds(prevGuessRounds => [newRndNumber, ...prevGuessRounds]);
     }
 
     return (
@@ -83,7 +85,9 @@ function GameScreen({ userNumber, onGameOver }) {
                     </View>
                 </View>
             </Card>
-            {/* <View>Log Rounds</View> */}
+            <View>
+                {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)}
+            </View>
         </View>
     );
 }
