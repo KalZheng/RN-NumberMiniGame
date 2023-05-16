@@ -15,6 +15,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   //here use the hooks/ specify the font type for app. changing from default.
   // this return boolean to show if fonts are loaded already
@@ -42,6 +43,11 @@ export default function App() {
     setGameIsOver(true);
   }
 
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGuessRounds(0);
+  }
+
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
@@ -50,7 +56,11 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />
+    screen = <GameOverScreen
+      roundsNumber={guessRounds}
+      userNumber={userNumber}
+      onStartNewGame={startNewGameHandler}
+    />;
   }
 
   return (
