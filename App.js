@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
+import { useState, useCallback } from 'react';
+import { StyleSheet, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';//use specify font type
 // import AppLoading from 'expo-app-loading';// deprecated
